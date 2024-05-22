@@ -21,11 +21,12 @@ class Conexion:
     
     def editar_cliente(self,nombre,apellido,dni):
         self.cursor.execute('''UPDATE clientes SET nombre=?,apellido=?,dni=? WHERE dni=?''', (nombre,apellido,dni,dni))
-        self.cursor.commit()
+        self.conexion.commit()
 
-    def eliminar_cliente(self,nombre,apellido,dni):
+    def eliminar_cliente(self,dni):
         self.cursor.execute('''DELETE FROM clientes WHERE dni=? ''',(dni,))
         self.conexion.commit()
+        
     #cierra la conexion a la bd
     def cerrar_conexion(self):
         self.cursor.close()
