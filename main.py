@@ -2,13 +2,13 @@ from base_datos.conexion import Conexion
 
 print("Bienvenidos al sistema del Supermercado")
 
-opcion=1
+opcion=5
 while (opcion!=0):
     try:
-        opcion=input("Escoja una opción: \n 1- Agregar cliente \n 2- Editar cliente \n 3-Eliminar cliente")
+        opcion=input("Escoja una opción:\n 1- Agregar cliente \n 2- Editar cliente\n 3-Eliminar cliente\n 4-Mostrar clientes \n 5- Salir\n")
+        if (opcion =="5"):
+            print("saliendo")
     except:
         print("Ingrese opcion valida")
-
-
 
 print("Estas fuera del sistema")
