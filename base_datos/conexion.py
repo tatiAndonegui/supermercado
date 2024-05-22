@@ -10,6 +10,22 @@ class Conexion:
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS clientes(nombre TEXT, apellido TEXT, dni TEXT)''')
         self.conexion.commit()
     
+    def agregar_clientes(self,nombre,apellido,dni):
+        self.cursor.execute('''INSERT INTO clientes VALUES(?,?,?)''',(nombre , apellido , dni))
+        self.conexion.commit()
+
+    def mostrar_clientes(self):
+        self.cursor.execute('''SELECT * FROM clientes''')
+        clientes=self.cursor.fetchall()
+        return clientes
+    
+    def editar_cliente(self,nombre,apellido,dni):
+        self.cursor.execute('''UPDATE clientes SET nombre=?,apellido=?,dni=? WHERE dni=?''', (nombre,apellido,dni,dni))
+        self.cursor.commit()
+
+    def eliminar_cliente(self,nombre,apellido,dni):
+        self.cursor.execute('''DELETE FROM clientes WHERE dni=? ''',(dni,))
+        self.conexion.commit()
     #cierra la conexion a la bd
     def cerrar_conexion(self):
         self.cursor.close()
